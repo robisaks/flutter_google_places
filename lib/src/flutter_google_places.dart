@@ -50,6 +50,7 @@ class PlacesAutocompleteWidget extends StatefulWidget {
       this.components,
       this.strictbounds,
       this.logo,
+      this.defaultSearch,
       this.onError,
       Key key,
       this.proxyBaseUrl,
@@ -441,6 +442,7 @@ class PlacesAutocomplete {
       List<Component> components,
       bool strictbounds,
       Widget logo,
+      String defaultSearch,
       ValueChanged<PlacesAutocompleteResponse> onError,
       String proxyBaseUrl,
       Client httpClient}) {
@@ -457,6 +459,7 @@ class PlacesAutocomplete {
         offset: offset,
         hint: hint,
         logo: logo,
+        defaultSearch: defaultSearch,
         onError: onError,
         proxyBaseUrl: proxyBaseUrl,
         httpClient: httpClient);
