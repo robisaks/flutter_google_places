@@ -53,6 +53,7 @@ class PlacesAutocompleteField extends StatefulWidget {
     this.types,
     this.components,
     this.strictbounds,
+    this.defaultSearch,
     this.onChanged,
     this.onError,
     this.inputDecoration = const InputDecoration(),
@@ -123,6 +124,8 @@ class PlacesAutocompleteField extends StatefulWidget {
   final num radius;
 
   final bool strictbounds;
+  
+  final String defaultSearch;
 
   /// Called when the text being edited changes.
   final ValueChanged<String> onChanged;
@@ -169,6 +172,7 @@ class _LocationAutocompleteFieldState extends State<PlacesAutocompleteField> {
         radius: widget.radius,
         types: widget.types,
         strictbounds: widget.strictbounds,
+        defaultSearch: widget.defaultSearch,
       );
 
   void _handleTap() async {
@@ -187,7 +191,9 @@ class _LocationAutocompleteFieldState extends State<PlacesAutocompleteField> {
   @override
   Widget build(BuildContext context) {
     final TextEditingController controller = _effectiveController;
-
+    if(widget.defaultSearch.isNotEmpty){
+      controller.text = widget.defaultSearch;
+    }
     var text = controller.text.isNotEmpty
         ? Text(
             controller.text,
